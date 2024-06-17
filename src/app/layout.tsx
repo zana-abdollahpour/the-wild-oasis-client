@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
 import "@/styles/globals.css";
 
-import Navigation from "@/components/navigation";
-import Logo from "@/components/navigation/Logo";
+import Header from "@/components/header";
 
 export const metadata: Metadata = {
   title: {
@@ -27,13 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${josefin.className} bg-primary-950 text-primary-100 min-h-screen`}
+        className={`${josefin.className} flex min-h-screen flex-col bg-primary-950 text-primary-100 antialiased`}
       >
-        <header>
-          <Logo />
-          <Navigation />
-        </header>
-        <main>{children}</main>
+        <Header />
+        <div className="flex-1 px-8 py-12">
+          <main className="mx-auto max-w-7xl">{children}</main>
+        </div>
       </body>
     </html>
   );
