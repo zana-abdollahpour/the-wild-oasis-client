@@ -1,3 +1,7 @@
 export default function Home() {
-  return <h1>initial commit</h1>;
+  return (
+    <div>
+      <h1>The wild oasis. Welcome to paradise.</h1>
+    </div>
+  );
 }
