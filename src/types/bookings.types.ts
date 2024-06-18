@@ -1,14 +1,6 @@
+import type { Database } from "./database.types";
 import type { Cabin } from "./cabins.types";
 
-export interface Booking {
-  id: string;
-  guestId: string;
-  startDate: string;
-  endDate: string;
-  numNights: number;
-  totalPrice: number;
-  numGuests: number;
-  status: string;
-  created_at: string;
+export type Booking = Database["public"]["Tables"]["bookings"]["Row"] & {
   cabins: { name: Cabin["name"]; image: Cabin["image"] };
-}
+};
