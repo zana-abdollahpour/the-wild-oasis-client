@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import backgroundImage from "/public/bg.png";
-import { routes } from "@/routes";
+import { mainRoutes } from "@/routes";
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
           Welcome to paradise.
         </h1>
         <Link
-          href={routes.cabins}
+          href={mainRoutes.cabins.url}
           className="bg-accent-500 px-8 py-6 text-lg font-semibold text-primary-800 transition-all hover:bg-accent-600"
         >
           Explore luxury cabins

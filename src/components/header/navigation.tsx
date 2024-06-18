@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import { routes } from "@/routes";
-import { capitalize } from "@/utils";
+import { mainRoutes } from "@/routes";
 
 export default function Navigation() {
   return (
@@ -9,26 +8,26 @@ export default function Navigation() {
       <ul className="flex items-center gap-16">
         <li>
           <Link
-            href={routes.cabins}
+            href={mainRoutes.cabins.url}
             className="transition-colors hover:text-accent-400"
           >
-            {capitalize(routes.cabins)}
+            {mainRoutes.cabins.name}
           </Link>
         </li>
         <li>
           <Link
-            href={routes.about}
+            href={mainRoutes.about.url}
             className="transition-colors hover:text-accent-400"
           >
-            {capitalize(routes.about)}
+            {mainRoutes.about.name}
           </Link>
         </li>
         <li>
           <Link
-            href={routes.account}
+            href={mainRoutes.account.url}
             className="transition-colors hover:text-accent-400"
           >
-            {capitalize(routes.account)}
+            {mainRoutes.account.name}
           </Link>
         </li>
       </ul>
