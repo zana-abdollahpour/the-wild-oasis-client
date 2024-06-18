@@ -1,4 +1,4 @@
-import Navigation from "./navigation";
+import Navigation from "./Navigation";
 import Logo from "./Logo";
 
 function Header() {
