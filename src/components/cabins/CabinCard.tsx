@@ -1,12 +1,15 @@
 import Image from "next/image";
-
+import Link from "next/link";
 import { UsersIcon } from "@heroicons/react/24/solid";
 
 import type { Cabin } from "@/types/cabins.types";
 import { mainRoutes } from "@/routes";
 
 interface CabinCardProps {
-  cabin: Cabin;
+  cabin: Pick<
+    Cabin,
+    "id" | "name" | "maxCapacity" | "regularPrice" | "discount" | "image"
+  >;
 }
 
 function CabinCard({ cabin }: CabinCardProps) {
@@ -14,11 +17,14 @@ function CabinCard({ cabin }: CabinCardProps) {
 
   return (
     <div className="flex border border-primary-800">
-      <Image
-        src={image}
-        alt={`Cabin ${name}`}
-        className="flex-1 border-r border-primary-800"
-      />
+      <div className="relative flex-1">
+        <Image
+          src={image!}
+          alt={`Cabin ${name}`}
+          className="flex-1 border-r border-primary-800 object-cover"
+          fill
+        />
+      </div>
 
       <div className="flex-grow">
         <div className="bg-primary-950 px-7 pb-4 pt-5">
@@ -34,10 +40,10 @@ function CabinCard({ cabin }: CabinCardProps) {
           </div>
 
           <p className="flex items-baseline justify-end gap-3">
-            {discount > 0 ? (
+            {discount! > 0 ? (
               <>
                 <span className="text-3xl font-[350]">
-                  ${regularPrice - discount}
+                  ${regularPrice! - discount!}
                 </span>
                 <span className="font-semibold text-primary-600 line-through">
                   ${regularPrice}
@@ -51,12 +57,12 @@ function CabinCard({ cabin }: CabinCardProps) {
         </div>
 
         <div className="border-t border-t-primary-800 bg-primary-950 text-right">
-          <a
+          <Link
             href={`${mainRoutes.cabins.url}/${id}`}
             className="inline-block border-l border-primary-800 px-6 py-4 transition-all hover:bg-accent-600 hover:text-primary-900"
           >
             Details & reservation &rarr;
-          </a>
+          </Link>
         </div>
       </div>
     </div>
