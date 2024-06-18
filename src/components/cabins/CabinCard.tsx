@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { UsersIcon } from "@heroicons/react/24/solid";
 
-import type { Cabin } from "@/types/cabins";
+import type { Cabin } from "@/types/cabins.types";
 
 interface CabinCardProps {
   cabin: Cabin;

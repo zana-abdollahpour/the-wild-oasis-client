@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import CabinCard from "@/components/cabins/CabinCard";
-import { Cabin } from "@/types/cabins";
+import type { Cabin } from "@/types/cabins.types";
 
 export const metadata: Metadata = {
   title: "Cabins",
