@@ -1,6 +1,11 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 
 import SelectCountry from "@/components/reservations/SelectCountry";
+
+export const metadata: Metadata = {
+  title: "Update profile",
+};
 
 export default function ProfilePage() {
   // const countryFlag = "germany.jpg";

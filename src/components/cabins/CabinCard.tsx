@@ -3,6 +3,7 @@ import Image from "next/image";
 import { UsersIcon } from "@heroicons/react/24/solid";
 
 import type { Cabin } from "@/types/cabins.types";
+import { mainRoutes } from "@/routes";
 
 interface CabinCardProps {
   cabin: Cabin;
@@ -51,7 +52,7 @@ function CabinCard({ cabin }: CabinCardProps) {
 
         <div className="border-t border-t-primary-800 bg-primary-950 text-right">
           <a
-            href={`/cabins/${id}`}
+            href={`${mainRoutes.cabins.url}/${id}`}
             className="inline-block border-l border-primary-800 px-6 py-4 transition-all hover:bg-accent-600 hover:text-primary-900"
           >
             Details & reservation &rarr;

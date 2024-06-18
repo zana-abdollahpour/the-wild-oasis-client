@@ -1,5 +1,13 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+
 import ReservationCard from "@/components/reservations/ReservationCard";
 import type { Booking } from "@/types/bookings.types";
+import { mainRoutes } from "@/routes";
+
+export const metadata: Metadata = {
+  title: "Reservations",
+};
 
 export default function ReservationsPage() {
   const bookings: Booking[] = [];
@@ -13,9 +21,12 @@ export default function ReservationsPage() {
       {bookings.length === 0 ? (
         <p className="text-lg">
           You have no reservations yet. Check out our{" "}
-          <a className="text-accent-500 underline" href="/cabins">
+          <Link
+            className="text-accent-500 underline"
+            href={mainRoutes.cabins.url}
+          >
             luxury cabins &rarr;
-          </a>
+          </Link>
         </p>
       ) : (
         <ul className="space-y-6">

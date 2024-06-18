@@ -4,6 +4,7 @@ import { format, formatDistance, isPast, isToday, parseISO } from "date-fns";
 
 import DeleteReservation from "./DeleteReservation";
 import type { Booking } from "@/types/bookings.types";
+import { accountPageRoutes } from "@/routes";
 
 export const formatDistanceFromNow = (dateStr: string) =>
   formatDistance(parseISO(dateStr), new Date(), {
@@ -76,7 +77,7 @@ function ReservationCard({ booking }: ReservationCardProps) {
 
       <div className="flex w-[100px] flex-col border-l border-primary-800">
         <a
-          href={`/account/reservations/edit/${id}`}
+          href={`${accountPageRoutes.reservations.url}/edit/${id}`}
           className="group flex flex-grow items-center gap-2 border-b border-primary-800 px-3 text-xs font-bold uppercase text-primary-300 transition-colors hover:bg-accent-600 hover:text-primary-900"
         >
           <PencilSquareIcon className="h-5 w-5 text-primary-600 transition-colors group-hover:text-primary-800" />
