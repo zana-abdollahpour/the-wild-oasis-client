@@ -2,13 +2,19 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 
-import { getCabin } from "@/utils/data-service";
+import { getCabin, getCabins } from "@/utils/data-service";
 
 export async function generateMetadata({
   params: { cabinId },
 }: CabinPageProps) {
   const cabin = await getCabin(+cabinId);
   return { title: `Cabin ${cabin?.name || "not found"}` };
+}
+
+export async function generateStaticParams() {
+  const cabins = await getCabins();
+  const cabinIds = cabins.map((cabin) => ({ cabinId: cabin.id.toString() }));
+  return cabinIds;
 }
 
 interface CabinPageProps {
