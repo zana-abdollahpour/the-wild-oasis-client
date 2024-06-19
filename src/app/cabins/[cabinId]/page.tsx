@@ -1,7 +1,15 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 
 import { getCabin } from "@/utils/data-service";
+
+export async function generateMetadata({
+  params: { cabinId },
+}: CabinPageProps) {
+  const cabin = await getCabin(+cabinId);
+  return { title: `Cabin ${cabin?.name || "not found"}` };
+}
 
 interface CabinPageProps {
   params: { cabinId: string };
@@ -11,7 +19,7 @@ export default async function CabinPage({
   params: { cabinId },
 }: CabinPageProps) {
   const cabin = await getCabin(+cabinId);
-  if (!cabin) return;
+  if (!cabin) notFound();
 
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
     cabin;
