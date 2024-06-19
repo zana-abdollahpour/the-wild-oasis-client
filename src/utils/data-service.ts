@@ -1,9 +1,10 @@
+import { notFound } from "next/navigation";
 import { eachDayOfInterval } from "date-fns";
 
 import { supabase } from "./supabase";
 import type { Cabin } from "@/types/cabins.types";
 import type { Booking } from "@/types/bookings.types";
-import { Guest } from "@/types/guests.types";
+import type { Guest } from "@/types/guests.types";
 
 /////////////
 // GET
@@ -20,6 +21,7 @@ export async function getCabin(id: Cabin["id"]) {
 
   if (error) {
     console.error(error);
+    notFound();
   }
 
   return data;
