@@ -3,15 +3,24 @@ import type { Metadata } from "next";
 
 import CabinList from "@/components/cabins/CabinList";
 import Spinner from "@/components/ui/Spinner";
-import { CABINS_PAGE_REVALIDATION } from "@/constants/revalidations";
+import type { CabinCapacity } from "@/types/cabins.types";
 
 export const metadata: Metadata = {
   title: "Cabins",
 };
 
-export const revalidate = CABINS_PAGE_REVALIDATION;
+interface CabinsPageProps {
+  searchParams: {
+    capacity: CabinCapacity;
+  };
+}
 
-export default function CabinsPage() {
+export default function CabinsPage({
+  searchParams: { capacity },
+}: CabinsPageProps) {
+  const filter = capacity ?? "all";
+  console.log(filter);
+
   return (
     <div>
       <h1 className="mb-5 text-4xl font-medium text-accent-400">
@@ -27,7 +36,7 @@ export default function CabinsPage() {
       </p>
 
       <Suspense fallback={<Spinner />}>
-        <CabinList />
+        <CabinList filter={filter} />
       </Suspense>
     </div>
   );
