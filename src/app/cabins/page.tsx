@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import CabinList from "@/components/cabins/CabinList";
 import Spinner from "@/components/ui/Spinner";
+import Filter from "@/components/cabins/Filter";
 import type { CabinCapacity } from "@/types/cabins.types";
 
 export const metadata: Metadata = {
@@ -35,7 +36,11 @@ export default function CabinsPage({
         Welcome to paradise.
       </p>
 
-      <Suspense fallback={<Spinner />}>
+      <div className="mb-8 flex justify-end">
+        <Filter />
+      </div>
+
+      <Suspense fallback={<Spinner />} key={filter}>
         <CabinList filter={filter} />
       </Suspense>
     </div>
