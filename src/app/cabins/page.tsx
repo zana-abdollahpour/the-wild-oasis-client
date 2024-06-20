@@ -3,10 +3,13 @@ import type { Metadata } from "next";
 
 import CabinList from "@/components/cabins/CabinList";
 import Spinner from "@/components/ui/Spinner";
+import { CABINS_PAGE_REVALIDATION } from "@/constants/revalidations";
 
 export const metadata: Metadata = {
   title: "Cabins",
 };
+
+export const revalidate = CABINS_PAGE_REVALIDATION;
 
 export default function CabinsPage() {
   return (
