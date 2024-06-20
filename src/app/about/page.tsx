@@ -4,12 +4,19 @@ import type { Metadata } from "next";
 import image1 from "/public/about-1.jpg";
 import image2 from "/public/about-2.jpg";
 import { mainRoutes } from "@/routes";
+import { getCabins } from "@/utils/data-service";
+import { ABOUT_PAGE_REVALIDATION } from "@/constants/revalidations";
 
 export const metadata: Metadata = {
   title: "About us",
 };
 
-export default function AboutPage() {
+export const revalidate = ABOUT_PAGE_REVALIDATION;
+
+export default async function AboutPage() {
+  const cabins = await getCabins();
+  const numCabins = cabins.length;
+
   return (
     <div className="grid grid-cols-5 items-center gap-x-24 gap-y-32 text-lg">
       <div className="col-span-3">
@@ -26,10 +33,10 @@ export default function AboutPage() {
             and enjoying simple pleasures with family.
           </p>
           <p>
-            Our 8 luxury cabins provide a cozy base, but the real freedom and
-            peace you&apos;ll find in the surrounding mountains. Wander through
-            lush forests, breathe in the fresh air, and watch the stars twinkle
-            above from the warmth of a campfire or your hot tub.
+            Our {numCabins} luxury cabins provide a cozy base, but the real
+            freedom and peace you&apos;ll find in the surrounding mountains.
+            Wander through lush forests, breathe in the fresh air, and watch the
+            stars twinkle above from the warmth of a campfire or your hot tub.
           </p>
           <p>
             This is where memorable moments are made, surrounded by
