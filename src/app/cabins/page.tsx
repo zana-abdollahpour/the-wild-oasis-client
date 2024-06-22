@@ -21,7 +21,6 @@ export default function CabinsPage({
   searchParams: { capacity },
 }: CabinsPageProps) {
   const filter = capacity ?? "all";
-  console.log(filter);
 
   return (
     <div>
