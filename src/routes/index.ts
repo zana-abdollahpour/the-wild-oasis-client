@@ -10,3 +10,7 @@ export const accountPageRoutes = {
   reservations: { name: "Reservations", url: "/account/reservations" },
   guestProfile: { name: "Guest profile", url: "/account/profile" },
 } as const;
+
+export const authRoutes = {
+  login: { name: "login", url: "/login" },
+} as const;
