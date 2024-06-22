@@ -6,6 +6,7 @@ import "react-day-picker/dist/style.css";
 
 import type { Settings } from "@/types/settings.types";
 import type { Cabin } from "@/types/cabins.types";
+import { useReservation } from "@/hooks/useReservation";
 
 // TODO: change any types below
 function isAlreadyBooked(range: any, datesArr: any) {
@@ -25,14 +26,14 @@ interface DateSelectorProps {
 }
 
 function DateSelector({ settings, bookedDates, cabin }: DateSelectorProps) {
+  const { range, setRange, resetRange } = useReservation();
+
   // CHANGE
   const regularPrice = 23;
   const discount = 23;
   const numNights = 23;
   const cabinPrice = 23;
-  const range = { from: null, to: null };
 
-  // SETTINGS
   const { minBookingLength, maxBookingLength } = settings;
 
   return (
@@ -47,6 +48,8 @@ function DateSelector({ settings, bookedDates, cabin }: DateSelectorProps) {
         toYear={new Date().getFullYear() + 5}
         captionLayout="dropdown"
         numberOfMonths={2}
+        selected={range}
+        onSelect={(range) => setRange(range!)}
       />
 
       <div className="flex h-[72px] items-center justify-between bg-accent-500 px-8 text-primary-800">
@@ -81,8 +84,7 @@ function DateSelector({ settings, bookedDates, cabin }: DateSelectorProps) {
           <button
             type="button"
             className="border border-primary-800 px-4 py-2 text-sm font-semibold"
-            // TODO: add resetRange()
-            // onClick={() => resetRange()}
+            onClick={resetRange}
           >
             Clear
           </button>

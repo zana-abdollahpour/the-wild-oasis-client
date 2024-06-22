@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import CabinList from "@/components/cabins/CabinList";
 import Spinner from "@/components/ui/Spinner";
 import Filter from "@/components/cabins/Filter";
+import ReservationReminder from "@/components/reservations/ReservationReminder";
 import type { CabinCapacity } from "@/types/cabins.types";
 
 export const metadata: Metadata = {
@@ -42,6 +43,7 @@ export default function CabinsPage({
 
       <Suspense fallback={<Spinner />} key={filter}>
         <CabinList filter={filter} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );

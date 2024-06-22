@@ -5,7 +5,6 @@ interface ReservationFormProps {
 }
 
 function ReservationForm({ cabin }: ReservationFormProps) {
-  // CHANGE
   const { maxCapacity } = cabin;
 
   return (
