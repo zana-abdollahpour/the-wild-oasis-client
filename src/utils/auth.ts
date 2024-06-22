@@ -4,6 +4,11 @@ import type { NextAuthConfig } from "next-auth";
 
 const authConfig: NextAuthConfig = {
   providers: [Google],
+  callbacks: {
+    authorized({ auth, request }) {
+      return !!auth?.user;
+    },
+  },
 };
 
 export const {
