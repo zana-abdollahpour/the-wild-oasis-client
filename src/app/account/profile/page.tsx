@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 
 import UpdateProfileForm from "@/components/profile/UpdateProfileForm";
 import SelectCountry from "@/components/reservations/SelectCountry";
+import { auth } from "@/utils/auth";
+import { getGuest } from "@/utils/data-service";
 
 export const metadata: Metadata = {
   title: "Update profile",
 };
 
-export default function ProfilePage() {
-  // const countryFlag = "germany.jpg";
-  const nationality = "germany";
+export default async function ProfilePage() {
+  const session = await auth();
+  const guest = await getGuest(session?.user?.email!);
 
   return (
     <div>
@@ -22,12 +24,12 @@ export default function ProfilePage() {
         faster and smoother. See you soon!
       </p>
 
-      <UpdateProfileForm>
+      <UpdateProfileForm guest={guest!}>
         <SelectCountry
           name="nationality"
           id="nationality"
           className="w-full rounded-sm bg-primary-200 px-5 py-3 text-primary-800 shadow-sm"
-          defaultCountry={nationality}
+          defaultCountry={guest?.nationality!}
         />
       </UpdateProfileForm>
     </div>
