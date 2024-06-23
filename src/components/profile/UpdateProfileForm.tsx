@@ -4,7 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 
 import { updateProfileAction } from "@/actions";
+
 import type { Guest } from "@/types/guests.types";
+import FormButton from "@/components/ui/FormButton";
 
 interface UpdateProfileFormProps {
   children: React.ReactNode;
@@ -70,12 +72,7 @@ export default function UpdateProfileForm({
       </div>
 
       <div className="flex items-center justify-end gap-6">
-        <button
-          type="submit"
-          className="bg-accent-500 px-8 py-4 font-semibold text-primary-800 transition-all hover:bg-accent-600 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
-        >
-          Update profile
-        </button>
+        <FormButton pendingContent="updating...">Update profile</FormButton>
       </div>
     </form>
   );
