@@ -1,14 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import type { Session } from "next-auth";
 
 import { accountPageRoutes } from "@/routes";
 import { auth } from "@/utils/auth";
 import { updateGuest } from "@/utils/data-service";
+import type { SessionWithGuestId } from "@/types/auth.types";
 
 export async function updateProfileAction(formData: FormData) {
-  const session = (await auth()) as Session & { user: { guestId: string } };
+  const session = (await auth()) as SessionWithGuestId;
   if (!session) throw new Error("You must be logged in!");
 
   const nationalID = formData.get("nationalID") as string;

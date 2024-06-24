@@ -2,15 +2,19 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import ReservationCard from "@/components/reservations/ReservationCard";
-import type { Booking } from "@/types/bookings.types";
 import { mainRoutes } from "@/routes";
+import { getBookings } from "@/utils/data-service";
+import { auth } from "@/utils/auth";
+import type { SessionWithGuestId } from "@/types/auth.types";
+import type { Booking } from "@/types/bookings.types";
 
 export const metadata: Metadata = {
   title: "Reservations",
 };
 
-export default function ReservationsPage() {
-  const bookings: Booking[] = [];
+export default async function ReservationsPage() {
+  const session = (await auth()) as SessionWithGuestId;
+  const bookings = (await getBookings(+session?.user.guestId)) as Booking[];
 
   return (
     <div>
