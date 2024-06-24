@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import ReservationCard from "@/components/reservations/ReservationCard";
 import { mainRoutes } from "@/routes";
 import { getBookings } from "@/utils/data-service";
 import { auth } from "@/utils/auth";
+import ReservationList from "@/components/reservations/ReservationList";
 import type { SessionWithGuestId } from "@/types/auth.types";
 import type { Booking } from "@/types/bookings.types";
 
@@ -34,9 +34,7 @@ export default async function ReservationsPage() {
         </p>
       ) : (
         <ul className="space-y-6">
-          {bookings.map((booking) => (
-            <ReservationCard booking={booking} key={booking.id} />
-          ))}
+          <ReservationList bookings={bookings} />
         </ul>
       )}
     </div>
