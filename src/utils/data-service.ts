@@ -235,3 +235,16 @@ export async function deleteBooking(id: Booking["id"]) {
   }
   return data;
 }
+
+/////////////
+// Verification
+
+export async function ownsReservation(
+  guestId: Guest["id"],
+  bookingId: Booking["id"],
+) {
+  const guestBookings = await getBookings(guestId);
+  const guestBookingIds = guestBookings.map((booking) => booking.id);
+
+  return guestBookingIds.includes(bookingId);
+}
