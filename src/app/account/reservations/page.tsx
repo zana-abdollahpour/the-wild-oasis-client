@@ -33,9 +33,7 @@ export default async function ReservationsPage() {
           </Link>
         </p>
       ) : (
-        <ul className="space-y-6">
-          <ReservationList bookings={bookings} />
-        </ul>
+        <ReservationList bookings={bookings} />
       )}
     </div>
   );
