@@ -167,7 +167,7 @@ export async function createGuest(newGuest: Pick<Guest, "email" | "fullName">) {
   return data;
 }
 
-export async function createBooking(newBooking: Booking) {
+export async function createBooking(newBooking: Partial<Booking>) {
   const { data, error } = await supabase
     .from("bookings")
     .insert([newBooking])

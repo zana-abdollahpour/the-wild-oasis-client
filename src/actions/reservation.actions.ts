@@ -4,8 +4,9 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { auth } from "@/utils/auth";
-import { accountPageRoutes } from "@/routes";
+import { accountPageRoutes, mainRoutes } from "@/routes";
 import {
+  createBooking,
   deleteBooking,
   ownsReservation,
   updateBooking,
@@ -44,4 +45,42 @@ export async function updateReservationAction(formData: FormData) {
   revalidatePath(`${accountPageRoutes.reservations.url}/edit/${bookingId}`);
 
   redirect(accountPageRoutes.reservations.url);
+}
+
+export async function createReservationAction(
+  bookingData: {
+    startDate: Date;
+    endDate: Date;
+    numNights: number;
+    cabinId: number;
+    cabinPrice: number;
+  },
+  formData: FormData,
+) {
+  const session = (await auth()) as SessionWithGuestId;
+  if (!session) throw new Error("You must be logged in!");
+
+  const { startDate, endDate, numNights, cabinPrice, cabinId } = bookingData;
+
+  const newBooking = {
+    startDate: startDate.toISOString(),
+    endDate: endDate.toISOString(),
+    numNights,
+    cabinPrice,
+    cabinId,
+    guestId: +session.user.guestId,
+    numGuests: +(formData.get("numGuests") as string),
+    observations: formData.get("observations")?.slice(1000) as string,
+    totalPrice: bookingData.cabinPrice,
+    isPaid: false,
+    hasBreakfast: false,
+    status: "unconfirmed",
+    extrasPrice: 0,
+  };
+
+  await createBooking(newBooking);
+
+  revalidatePath(`${mainRoutes.cabins.url}/${bookingData.cabinId}`);
+
+  redirect(accountPageRoutes.thanks.url);
 }
