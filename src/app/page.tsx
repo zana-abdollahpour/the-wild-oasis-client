@@ -17,12 +17,12 @@ export default function Home() {
       />
 
       <div className="relative z-10 text-center">
-        <h1 className="mb-10 text-8xl font-normal tracking-tight text-primary-50">
+        <h1 className="mb-16 text-6xl font-normal tracking-tight text-accent-50 md:text-8xl">
           Welcome to paradise.
         </h1>
         <Link
           href={mainRoutes.cabins.url}
-          className="bg-accent-500 px-8 py-6 text-lg font-semibold text-primary-800 transition-all hover:bg-accent-600"
+          className="bg-accent-500 px-8 py-6 font-semibold text-primary-800 transition-all hover:bg-accent-600 md:text-lg"
         >
           Explore luxury cabins
         </Link>
