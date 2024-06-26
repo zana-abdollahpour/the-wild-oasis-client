@@ -8,7 +8,7 @@ export default async function Navigation() {
 
   return (
     <nav className="z-10 text-xl">
-      <ul className="flex items-center gap-16">
+      <ul className="flex items-center gap-8 sm:gap-16">
         <li>
           <Link
             href={mainRoutes.cabins.url}
@@ -38,7 +38,7 @@ export default async function Navigation() {
                 alt={session?.user?.name || "user"}
                 referrerPolicy="no-referrer"
               />
-              <span>{mainRoutes.account.name}</span>
+              <span className="hidden md:block">{mainRoutes.account.name}</span>
             </Link>
           ) : (
             <Link

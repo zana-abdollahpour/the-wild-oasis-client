@@ -6,8 +6,14 @@ import { mainRoutes } from "@/routes";
 function Logo() {
   return (
     <Link href={mainRoutes.home.url} className="z-10 flex items-center gap-4">
-      <Image src="/logo.png" height="60" width="60" alt="The Wild Oasis logo" />
-      <span className="text-xl font-semibold text-primary-100">
+      <Image
+        src="/logo.png"
+        height={64}
+        width={64}
+        alt="The Wild Oasis logo"
+        className="min-w-16"
+      />
+      <span className="hidden text-xl font-semibold text-primary-100 sm:block">
         The Wild Oasis
       </span>
     </Link>
