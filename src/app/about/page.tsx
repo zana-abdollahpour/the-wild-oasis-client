@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 import image1 from "/public/about-1.jpg";
@@ -18,8 +19,8 @@ export default async function AboutPage() {
   const numCabins = cabins.length;
 
   return (
-    <div className="grid grid-cols-5 items-center gap-x-24 gap-y-32 text-lg">
-      <div className="col-span-3">
+    <div className="grid grid-cols-5 justify-items-center text-lg lg:items-center lg:gap-x-24 lg:gap-y-32">
+      <div className="col-span-5 mb-6 max-w-[38rem] lg:col-span-3 lg:max-w-full">
         <h1 className="mb-10 text-4xl font-medium text-accent-400">
           Welcome to The Wild Oasis
         </h1>
@@ -46,7 +47,7 @@ export default async function AboutPage() {
         </div>
       </div>
 
-      <div className="col-span-2">
+      <div className="col-span-5 mb-12 max-w-[38rem] lg:col-span-2">
         <Image
           src={image1}
           placeholder="blur"
@@ -55,7 +56,7 @@ export default async function AboutPage() {
         />
       </div>
 
-      <div className="col-span-2">
+      <div className="col-span-5 mb-6 max-w-[38rem] lg:col-span-2">
         <Image
           src={image2}
           placeholder="blur"
@@ -64,7 +65,7 @@ export default async function AboutPage() {
         />
       </div>
 
-      <div className="col-span-3">
+      <div className="col-span-5 max-w-[38rem] lg:col-span-3 lg:max-w-full">
         <h1 className="mb-10 text-4xl font-medium text-accent-400">
           Managed by our family since 1962
         </h1>
@@ -86,12 +87,12 @@ export default async function AboutPage() {
           </p>
 
           <div>
-            <a
+            <Link
               href={mainRoutes.cabins.url}
-              className="mt-4 inline-block bg-accent-500 px-8 py-5 text-lg font-semibold text-primary-800 transition-all hover:bg-accent-600"
+              className="mx-auto mt-4 block w-fit bg-accent-500 px-8 py-5 text-lg font-semibold text-primary-800 transition-all hover:bg-accent-600"
             >
               Explore our luxury cabins
-            </a>
+            </Link>
           </div>
         </div>
       </div>
