@@ -41,7 +41,12 @@ export async function getCabinPrice(id: Cabin["id"]) {
   return data;
 }
 
-export const getCabins = async function () {
+export const getCabins = async function (): Promise<
+  Pick<
+    Cabin,
+    "id" | "name" | "maxCapacity" | "regularPrice" | "discount" | "image"
+  >[]
+> {
   const { data, error } = await supabase
     .from("cabins")
     .select("id, name, maxCapacity, regularPrice, discount, image")
