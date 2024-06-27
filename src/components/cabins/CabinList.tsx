@@ -1,6 +1,6 @@
 import CabinCard from "./CabinCard";
 import { getCabins } from "@/utils/data-service";
-import type { Cabin, CabinCapacity } from "@/types/cabins.types";
+import type { CabinCapacity } from "@/types/cabins.types";
 
 interface CabinListProps {
   filter: CabinCapacity;
@@ -23,7 +23,7 @@ export default async function CabinList({ filter }: CabinListProps) {
     displayedCabins = cabins.filter((cabin) => cabin.maxCapacity! >= 8);
 
   return (
-    <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:gap-12 xl:gap-14">
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:gap-14">
       {displayedCabins!.map((cabin) => (
         <CabinCard cabin={cabin} key={cabin.id} />
       ))}

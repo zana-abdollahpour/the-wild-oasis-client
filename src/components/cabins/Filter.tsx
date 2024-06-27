@@ -20,7 +20,7 @@ export default function Filter() {
   }
 
   return (
-    <div className="flex border border-primary-800">
+    <div className="grid w-full grid-cols-1 gap-y-2 border border-primary-800 xs:mx-0 xs:w-auto xs:grid-cols-4">
       <FilterButton
         filter="all"
         handleFilter={handleFilter}
@@ -33,21 +33,21 @@ export default function Filter() {
         handleFilter={handleFilter}
         activeFilter={activeFilter}
       >
-        1&mdash;3 guests
+        1 &mdash; 3 guests
       </FilterButton>
       <FilterButton
         filter="medium"
         handleFilter={handleFilter}
         activeFilter={activeFilter}
       >
-        4&mdash;7 guests
+        4 &mdash; 7 guests
       </FilterButton>
       <FilterButton
         filter="large"
         handleFilter={handleFilter}
         activeFilter={activeFilter}
       >
-        8&mdash;12 guests
+        8 &mdash; 12 guests
       </FilterButton>
     </div>
   );
