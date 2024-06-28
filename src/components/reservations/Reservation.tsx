@@ -18,17 +18,21 @@ export default async function Reservation({ cabin }: ReservationProps) {
   const session = await auth();
 
   return (
-    <div className="grid min-h-[400px] grid-cols-2 border border-primary-800">
-      <DateSelector
-        settings={settings}
-        bookedDates={bookedDates}
-        cabin={cabin}
-      />
-      {session?.user ? (
-        <ReservationForm cabin={cabin} user={session.user} />
-      ) : (
-        <LoginMessage />
-      )}
+    <div className="grid min-h-[400px] border border-primary-800 lg:grid-cols-5">
+      <div className="lg:col-span-3">
+        <DateSelector
+          settings={settings}
+          bookedDates={bookedDates}
+          cabin={cabin}
+        />
+      </div>
+      <div className="bg-primary-800 lg:col-span-2">
+        {session?.user ? (
+          <ReservationForm cabin={cabin} user={session.user} />
+        ) : (
+          <LoginMessage />
+        )}
+      </div>
     </div>
   );
 }
