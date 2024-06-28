@@ -18,7 +18,7 @@ export default function UpdateProfileForm({
   return (
     <form
       action={updateProfileAction}
-      className="flex flex-col gap-6 bg-primary-900 px-12 py-8 text-lg"
+      className="flex flex-col gap-6 bg-primary-900 px-4 py-2 text-lg sm:px-12 sm:py-8"
     >
       <div className="space-y-2">
         <label htmlFor="fullName">Full name</label>
@@ -47,8 +47,8 @@ export default function UpdateProfileForm({
           <label htmlFor="nationality">Where are you from?</label>
           <Image
             src={countryFlag! || ""}
-            width={240}
-            height={240}
+            width={24}
+            height={24}
             alt="Country flag"
             className="h-5 rounded-sm"
           />
