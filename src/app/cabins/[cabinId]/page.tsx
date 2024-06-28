@@ -30,7 +30,7 @@ export default async function CabinPage({
   if (!cabin) notFound();
 
   return (
-    <div className="mx-auto mt-8 max-w-6xl">
+    <div className="mx-auto max-w-6xl lg:mt-8">
       <Cabin cabin={cabin} />
 
       <div>
