@@ -33,7 +33,7 @@ function SideNavigation() {
   const pathName = usePathname();
 
   return (
-    <nav className="w-fit border-r border-primary-900">
+    <nav className="!sticky top-4 w-fit border-r border-primary-900">
       <ul className="flex h-full flex-col gap-2 text-lg">
         {navLinks.map((link) => (
           <li className="w-fit md:w-full" key={link.name}>

@@ -19,7 +19,7 @@ export default async function AboutPage() {
   const numCabins = cabins.length;
 
   return (
-    <div className="grid grid-cols-5 justify-items-center text-lg lg:items-center lg:gap-x-24 lg:gap-y-32">
+    <div className="grid grid-cols-5 justify-items-center pb-12 text-lg lg:items-center lg:gap-x-24 lg:gap-y-32">
       <div className="col-span-5 mb-6 max-w-[38rem] lg:col-span-3 lg:max-w-full">
         <h1 className="mb-10 text-4xl font-medium text-accent-400">
           Welcome to The Wild Oasis

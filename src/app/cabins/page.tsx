@@ -23,7 +23,7 @@ export default function CabinsPage({
   const filter = capacity ?? "all";
 
   return (
-    <div>
+    <div className="pb-12">
       <h1 className="mb-5 text-4xl font-medium text-accent-400">
         Our Luxury Cabins
       </h1>
