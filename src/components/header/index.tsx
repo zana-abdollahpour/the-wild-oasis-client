@@ -1,9 +1,9 @@
-import Navigation from "./Navigation";
+import Navigation from "./temp_Navigation";
 import Logo from "./Logo";
 
 function Header() {
   return (
-    <header className="xs:px-8 xs:py-5 z-20 px-2 py-3">
+    <header className="z-20 px-2 py-3 xs:px-8 xs:py-5">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <Logo />
         <Navigation />
